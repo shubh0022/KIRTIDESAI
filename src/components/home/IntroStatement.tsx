@@ -39,17 +39,15 @@ export default function IntroStatement() {
         {/* Middle Column: Real Photograph of Kirti in white halter top with sunglasses */}
         <div className="lg:col-span-4">
           <ScrollReveal direction="up" delay={0.1}>
-            <div className="relative aspect-[3/4] w-full bg-[#FAF7F2] p-3 border border-[#161616]/15 shadow-md group">
-              <div className="relative w-full h-full overflow-hidden bg-[#E5D8C8]/50">
-                <Image
-                  src="/images/portrait/kirti-portrait-sunglasses.jpg"
-                  alt="Kirti Desai in white dress with sunglasses"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                  data-cursor="open"
-                />
-              </div>
+            <div className="relative aspect-[3/4] w-full overflow-hidden group">
+              <Image
+                src="/images/portrait/kirti-portrait-sunglasses.jpg"
+                alt="Kirti Desai in white dress with sunglasses"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                data-cursor="open"
+              />
             </div>
           </ScrollReveal>
         </div>

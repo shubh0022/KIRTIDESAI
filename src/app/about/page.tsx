@@ -17,17 +17,15 @@ export default function AboutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-[#161616]/10">
         {/* Real Photograph */}
         <div className="lg:col-span-5">
-          <div className="relative aspect-[3/4] w-full bg-[#FAF7F2] p-4 border border-[#161616]/15 shadow-xl">
-            <div className="relative w-full h-full overflow-hidden bg-[#E5D8C8]/50">
-              <Image
-                src="/images/portrait/kirti-portrait-sunglasses.jpg"
-                alt="Kirti Desai — Fashion Designer"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover object-top"
-              />
-            </div>
+          <div className="relative aspect-[3/4] w-full overflow-hidden">
+            <Image
+              src="/images/portrait/kirti-portrait-sunglasses.jpg"
+              alt="Kirti Desai — Fashion Designer"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 500px"
+              className="object-cover object-top"
+            />
           </div>
         </div>
 
