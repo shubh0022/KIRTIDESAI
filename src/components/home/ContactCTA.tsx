@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Mail, Phone } from 'lucide-react';
 import { siteSettings } from '@/data/siteContent';
+import { InstagramIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
 
 export default function ContactCTA() {
   return (
@@ -49,6 +50,28 @@ export default function ContactCTA() {
             >
               {siteSettings.email}
             </a>
+
+            <div className="flex items-center gap-3 pt-1">
+              <a
+                href={siteSettings.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs text-[#FAF7F2]/70 hover:text-[#A95F45] transition-colors inline-flex items-center gap-1.5"
+              >
+                <InstagramIcon className="w-3.5 h-3.5 text-[#A95F45]" />
+                <span>@kirtidesai19</span>
+              </a>
+              <span className="text-[#FAF7F2]/30">·</span>
+              <a
+                href={siteSettings.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs text-[#FAF7F2]/70 hover:text-[#A95F45] transition-colors inline-flex items-center gap-1.5"
+              >
+                <LinkedinIcon className="w-3.5 h-3.5 text-[#A95F45]" />
+                <span>LinkedIn</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

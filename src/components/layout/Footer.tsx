@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { siteSettings } from '@/data/siteContent';
 import Logo from '../ui/Logo';
+import { LinkedinIcon, InstagramIcon } from '../ui/SocialIcons';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,6 +24,28 @@ export default function Footer() {
             <p className="font-sans text-xs text-[#171717]/70 max-w-sm leading-relaxed font-light">
               Official digital portfolio and bespoke atelier of Kirti Desai. Fashion design, living Indian craft research, anatomical corsetry, and sustainable handloom innovation.
             </p>
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href={siteSettings.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#171717]/80 hover:text-[#A85E43] transition-colors border border-[#171717]/15 px-3 py-1.5 bg-[#FAF7F2] hover:border-[#A85E43]/40"
+                aria-label="Instagram Profile @kirtidesai19"
+              >
+                <InstagramIcon className="w-3.5 h-3.5 text-[#A85E43]" />
+                <span>@kirtidesai19</span>
+              </a>
+              <a
+                href={siteSettings.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#171717]/80 hover:text-[#A85E43] transition-colors border border-[#171717]/15 px-3 py-1.5 bg-[#FAF7F2] hover:border-[#A85E43]/40"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedinIcon className="w-3.5 h-3.5 text-[#A85E43]" />
+                <span>LinkedIn</span>
+              </a>
+            </div>
           </div>
 
           {/* Primary Editorial Navigation */}
@@ -122,6 +145,27 @@ export default function Footer() {
                 <MapPin className="w-3 h-3 text-[#A85E43]" />
                 <span>{siteSettings.location}</span>
               </p>
+              <div className="pt-2 mt-2 border-t border-[#171717]/10 flex items-center gap-3 text-[10px] uppercase tracking-wider font-mono">
+                <a
+                  href={siteSettings.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#A85E43] inline-flex items-center gap-1 transition-colors"
+                >
+                  <InstagramIcon className="w-3 h-3 text-[#A85E43]" />
+                  <span>Instagram</span>
+                </a>
+                <span className="text-[#171717]/30">·</span>
+                <a
+                  href={siteSettings.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#A85E43] inline-flex items-center gap-1 transition-colors"
+                >
+                  <LinkedinIcon className="w-3 h-3 text-[#A85E43]" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

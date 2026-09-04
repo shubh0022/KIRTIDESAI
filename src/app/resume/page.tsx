@@ -53,6 +53,16 @@ export default function ResumePage() {
             <p>{siteSettings.email}</p>
             <p>{siteSettings.phone}</p>
             <p>{siteSettings.location}</p>
+            <p className="pt-1">
+              <a href={siteSettings.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[#A95F45] transition-colors underline decoration-[#A95F45]/40">
+                linkedin.com/in/kirti-desai-723315377
+              </a>
+            </p>
+            <p>
+              <a href={siteSettings.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-[#A95F45] transition-colors underline decoration-[#A95F45]/40">
+                instagram.com/kirtidesai19
+              </a>
+            </p>
           </div>
         </div>
 

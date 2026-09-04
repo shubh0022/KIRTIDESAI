@@ -6,6 +6,7 @@ import { X, Download, ArrowUpRight, GraduationCap, Sparkles, CheckCircle2 } from
 import { siteSettings, technicalSkills } from '@/data/siteContent';
 import { projects } from '@/data/projects';
 import TechnicalStamp from '../ui/TechnicalStamp';
+import { InstagramIcon, LinkedinIcon } from '../ui/SocialIcons';
 
 export default function RecruiterDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -122,9 +123,33 @@ export default function RecruiterDrawer() {
         </div>
 
         {/* Footer Contact */}
-        <div className="pt-4 border-t border-[#161616]/10 font-mono text-xs text-[#161616]/70 flex items-center justify-between">
-          <span>{siteSettings.email}</span>
-          <span>{siteSettings.phone}</span>
+        <div className="pt-4 border-t border-[#161616]/10 font-mono text-xs text-[#161616]/70 space-y-2">
+          <div className="flex items-center justify-between">
+            <span>{siteSettings.email}</span>
+            <span>{siteSettings.phone}</span>
+          </div>
+          <div className="flex items-center justify-between pt-1 text-[11px]">
+            <a
+              href={siteSettings.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#161616] hover:text-[#A95F45] inline-flex items-center gap-1.5 transition-colors font-medium"
+            >
+              <LinkedinIcon className="w-3.5 h-3.5 text-[#A95F45]" />
+              <span>LinkedIn Profile</span>
+              <ArrowUpRight className="w-3 h-3 text-[#161616]/40" />
+            </a>
+            <a
+              href={siteSettings.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#161616] hover:text-[#A95F45] inline-flex items-center gap-1.5 transition-colors font-medium"
+            >
+              <InstagramIcon className="w-3.5 h-3.5 text-[#A95F45]" />
+              <span>@kirtidesai19</span>
+              <ArrowUpRight className="w-3 h-3 text-[#161616]/40" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -3,133 +3,143 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, ArrowDown } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import TechnicalStamp from '../ui/TechnicalStamp';
+import FashionDraftingOverlay from '../ui/FashionDraftingOverlay';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[95vh] flex flex-col justify-between pt-28 pb-12 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
-      {/* Vertical Side Indicator: SCROLL TO DISCOVER */}
-      <div className="hidden lg:flex fixed left-4 top-1/2 -translate-y-1/2 z-20 items-center gap-3 -rotate-90 origin-left pointer-events-none font-mono text-[9px] text-[#161616]/40 tracking-[0.25em] uppercase select-none">
+    <section className="relative min-h-[94vh] flex flex-col justify-between pt-20 sm:pt-24 pb-8 px-6 sm:px-10 lg:px-14 max-w-[1600px] mx-auto overflow-hidden">
+      {/* Subtle Vertical Side Scroll Indicator */}
+      <div className="hidden 2xl:flex fixed left-5 top-1/2 -translate-y-1/2 z-20 items-center gap-3 -rotate-90 origin-left pointer-events-none font-mono text-[9px] text-[#171717]/40 tracking-[0.28em] uppercase select-none">
         <span>← SCROLL TO DISCOVER</span>
       </div>
 
-      {/* Main Asymmetric Hero Body */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-6 z-10">
-        {/* Left Column: Editorial Display Typography & Narrative */}
+      {/* Main Full-Screen Desktop Editorial Composition */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center my-auto py-4 z-10">
+        {/* LEFT COLUMN: BRAND, HEADLINE & EDITORIAL NARRATIVE (5-6 Cols) */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-6 flex flex-col justify-center"
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-6 xl:col-span-5 flex flex-col justify-center"
         >
-          {/* Index Stamp 01 / 09 */}
-          <div className="flex items-center gap-3 mb-6">
-            <span className="font-mono text-xs text-[#A95F45] tracking-[0.25em] font-semibold">
+          {/* 1. Page Marker 01 / 09 & Brand Anchor */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="font-mono text-xs text-[#A85E43] tracking-[0.28em] font-semibold">
               01 / 09
             </span>
-            <span className="w-8 h-[1px] bg-[#A95F45]/30" />
-            <span className="font-mono text-[10px] text-[#161616]/60 tracking-widest uppercase">
-              PORTFOLIO COVER
+            <span className="w-8 h-[1px] bg-[#A85E43]/40" />
+            <span className="font-mono text-[10px] tracking-[0.25em] text-[#171717]/65 uppercase font-medium">
+              KIRTI DESAI · FASHION DESIGN
             </span>
           </div>
 
-          {/* Primary Name Typography */}
-          <h1 className="font-editorial-serif text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] tracking-tight leading-[0.88] text-[#161616] font-normal">
-            KIRTI <br />
-            <span className="italic font-light text-[#A95F45]">DESAI</span>
+          {/* 2. Large Elegant Serif Headline: PORTFOLIO COVER */}
+          <h1 className="font-editorial-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.75rem] xl:text-[6.75rem] tracking-tight leading-[0.88] text-[#171717] font-normal">
+            PORTFOLIO <br />
+            <span className="italic font-light text-[#A85E43]">COVER</span>
           </h1>
 
-          {/* Subtitle & Disciplines */}
-          <div className="mt-4">
-            <span className="font-sans font-medium text-xs md:text-sm tracking-[0.32em] text-[#161616] uppercase block">
-              FASHION DESIGN
+          {/* 3. Under Headline: Tagline & Disciplines */}
+          <div className="mt-4 space-y-1">
+            <span className="font-mono text-xs sm:text-[12px] tracking-[0.22em] text-[#171717] font-semibold uppercase block">
+              THE MAKING OF IDENTITY
             </span>
-            <span className="font-mono text-[10px] tracking-[0.22em] text-[#161616]/70 uppercase block mt-1">
+            <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.2em] text-[#A85E43] uppercase block font-medium">
               CRAFT · RESEARCH · GARMENT · STYLING
             </span>
           </div>
 
-          {/* Creative Concept Callout */}
-          <div className="mt-8 pt-6 border-t border-[#161616]/10 max-w-xl">
-            <span className="font-mono text-xs text-[#A95F45] tracking-widest uppercase font-semibold block mb-1">
-              THE MAKING OF IDENTITY
-            </span>
-            <p className="font-editorial-serif text-2xl sm:text-3xl text-[#161616] italic font-light leading-snug">
+          {/* 4. Short Supporting Copy */}
+          <div className="mt-5 pt-4 border-t border-[#171717]/10 max-w-lg">
+            <p className="font-sans text-xs sm:text-sm text-[#171717]/80 font-light leading-relaxed">
+              Exploring craft, material and emotion through fashion design.
+            </p>
+            <p className="font-editorial-serif text-lg sm:text-xl text-[#171717] italic font-light mt-1.5 leading-snug">
               &ldquo;Design begins with looking closely.&rdquo;
             </p>
           </div>
 
-          {/* Action CTAs */}
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          {/* 5. Primary CTA: EXPLORE WORK → */}
+          <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3.5">
             <Link
               href="/work"
-              data-cursor="view"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#A95F45] hover:bg-[#884E33] text-[#FAF7F2] font-mono text-xs tracking-[0.2em] uppercase transition-all duration-300 shadow-sm group"
+              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#171717] hover:bg-[#A85E43] text-[#FAF7F2] font-mono text-xs tracking-[0.22em] uppercase transition-all duration-300 shadow-sm group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85E43]"
             >
-              <span>EXPLORE THE WORK</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <span>EXPLORE WORK</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
 
             <Link
               href="/process"
-              data-cursor="go"
-              className="inline-flex items-center gap-2 px-6 py-4 border border-[#161616]/25 hover:border-[#161616] hover:bg-[#161616] hover:text-[#FAF7F2] text-[#161616] font-mono text-xs tracking-[0.2em] uppercase transition-all duration-300"
+              className="inline-flex items-center gap-2 px-5 py-3.5 border border-[#171717]/20 hover:border-[#A85E43] hover:text-[#A85E43] text-[#171717] font-mono text-xs tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A85E43]"
             >
               <span>VIEW PROCESS</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100" />
             </Link>
           </div>
         </motion.div>
 
-        {/* Right Column: Authentic Editorial Red Dress & Chandelier Portrait */}
+        {/* RIGHT COLUMN: REAL PHOTOGRAPH & ARCHITECTURAL DRAFTING OVERLAYS (6-7 Cols) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-6 relative"
+          transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-6 xl:col-span-7 relative flex items-center justify-center lg:justify-end"
         >
-          <div className="relative aspect-[3/4] w-full max-w-lg mx-auto bg-[#FAF7F2] p-3 border border-[#161616]/10 shadow-[0_16px_50px_rgba(0,0,0,0.08)] group">
-            {/* Real Authentic Photograph of Kirti in Red Evening Dress */}
-            <div className="relative w-full h-full overflow-hidden bg-[#E5D8C8]/50">
-              <Image
-                src="/images/portrait/kirti-portrait-red-curtain.jpg"
-                alt="Kirti Desai in red evening dress — Fashion Designer & Atelier Creative Director"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 550px"
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                data-cursor="open"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70" />
+          {/* Main Visual Stage */}
+          <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-2xl aspect-[3/4] flex items-center justify-center">
+            {/* Layer A: Ambient Warm Editorial Aura */}
+            <div className="absolute -inset-10 bg-gradient-to-tr from-[#A85E43]/14 via-[#E5D8C8]/40 to-transparent rounded-full blur-3xl pointer-events-none -z-20" />
 
-              {/* Bottom In-Image Academic Caption */}
-              <div className="absolute bottom-5 left-5 right-5 text-white z-10 font-mono">
-                <span className="text-[9px] tracking-widest text-[#E5D8C8] uppercase block">
-                  KIRTI DESAI · ATELIER
+            {/* Layer B: Delicate Hand-Drawn Fashion Sketches & Pattern Drafting Blueprint */}
+            <FashionDraftingOverlay className="-z-10" />
+
+            {/* Layer C: Real Authentic Kirti Desai Photograph Seamlessly Integrated */}
+            <div className="relative w-[86%] sm:w-[84%] h-[92%] sm:h-[90%] group">
+              <div
+                className="relative w-full h-full overflow-hidden transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+                style={{
+                  WebkitMaskImage:
+                    'radial-gradient(ellipse 95% 91% at 50% 46%, black 72%, rgba(0,0,0,0.5) 86%, transparent 100%)',
+                  maskImage:
+                    'radial-gradient(ellipse 95% 91% at 50% 46%, black 72%, rgba(0,0,0,0.5) 86%, transparent 100%)',
+                }}
+              >
+                <Image
+                  src="/images/portrait/kirti-portrait-red-curtain.jpg"
+                  alt="Kirti Desai — Fashion Designer & Atelier Creative Director"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 650px"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              </div>
+
+              {/* Layer D: Haute Couture Editorial Identifier Tag */}
+              <div className="mt-3 flex items-center justify-between font-mono text-[10px] text-[#171717]/65 tracking-[0.2em] uppercase">
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#A85E43] inline-block animate-pulse" />
+                  <span>KIRTI DESAI · ATELIER STUDY</span>
                 </span>
-                <p className="font-editorial-serif text-xl text-[#FAF7F2] tracking-wide leading-tight mt-0.5">
-                  Fashion Design Student
-                </p>
-                <p className="text-[10px] text-white/80 mt-0.5 leading-relaxed">
-                  Parul Institute of Design · Parul University (2023 – 2027)
-                </p>
+                <span className="text-[#A85E43] font-semibold">PARUL UNIVERSITY</span>
               </div>
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Bottom Row */}
-      <div className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between pt-6 border-t border-[#161616]/10 gap-2 z-10 font-mono text-[11px] text-[#161616]/60 uppercase tracking-widest">
-        <div className="flex items-center gap-2">
-          <span>PARUL INSTITUTE OF DESIGN</span>
-          <span>·</span>
-          <span>KOLHAPUR, MAHARASHTRA</span>
+      {/* BOTTOM METADATA BAR: REFINED ACADEMIC & STUDIO ANCHOR */}
+      <div className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between pt-6 border-t border-[#171717]/10 gap-3 z-10 font-mono text-[10px] sm:text-[11px] text-[#171717]/65 uppercase tracking-[0.2em]">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <span className="text-[#171717] font-semibold">PARUL INSTITUTE OF DESIGN</span>
+          <span className="text-[#A85E43]">·</span>
+          <span>PARUL UNIVERSITY (2023 – 2027)</span>
         </div>
 
-        <div className="flex items-center gap-4 text-[#161616]/50 text-[10px]">
-          <span>RESEARCH → MATERIAL → EXPERIMENT → CONSTRUCTION → EXPRESSION</span>
+        <div className="flex items-center gap-4 text-[#171717]/50 text-[10px]">
+          <span>CRAFT · RESEARCH · GARMENT · STYLING</span>
         </div>
       </div>
     </section>

@@ -8,7 +8,8 @@ export const siteSettings: SiteSettings = {
   location: 'Kolhapur, Maharashtra',
   email: 'desaikirti192004@gmail.com',
   phone: '(+91) 702-863-XXXX',
-  linkedin: 'https://www.linkedin.com/in/kirti-desai-72251577',
+  linkedin: 'https://www.linkedin.com/in/kirti-desai-723315377?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
+  instagram: 'https://www.instagram.com/kirtidesai19',
   academicInstitute: 'Parul Institute of Design, Parul University',
   academicPeriod: '2023 – 2027',
 };

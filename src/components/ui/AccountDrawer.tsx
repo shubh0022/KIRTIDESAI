@@ -152,12 +152,20 @@ export default function AccountDrawer() {
           </div>
         </div>
 
-        {/* Footer Link */}
-        <div className="pt-4 border-t border-[#171717]/10">
+        {/* Footer Links */}
+        <div className="pt-4 border-t border-[#171717]/10 space-y-2">
+          <Link
+            href="/account"
+            onClick={closeAccount}
+            className="w-full flex items-center justify-center gap-2 p-3.5 bg-[#171717] hover:bg-[#A85E43] text-[#FAF7F2] font-mono text-xs tracking-widest uppercase transition-colors"
+          >
+            <span>ENTER MY ATELIER CONCIERGE</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
           <Link
             href="/contact"
             onClick={closeAccount}
-            className="w-full flex items-center justify-center gap-2 p-3 border border-[#171717]/20 hover:border-[#171717] text-[#171717] font-mono text-xs tracking-widest uppercase transition-colors"
+            className="w-full flex items-center justify-center gap-2 p-2.5 border border-[#171717]/20 hover:border-[#171717] text-[#171717] font-mono text-xs tracking-widest uppercase transition-colors"
           >
             <span>CONTACT ATELIER DIRECTLY</span>
             <ArrowUpRight className="w-3.5 h-3.5" />

@@ -104,6 +104,7 @@ export interface SiteSettings {
   email: string;
   phone: string;
   linkedin: string;
+  instagram: string;
   academicInstitute: string;
   academicPeriod: string;
 }

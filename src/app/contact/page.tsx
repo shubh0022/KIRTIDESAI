@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin, CheckCircle2, ArrowUpRight } from 'lucide-react';
 import { siteSettings } from '@/data/siteContent';
 import SectionHeader from '@/components/ui/SectionHeader';
 import TechnicalStamp from '@/components/ui/TechnicalStamp';
+import { InstagramIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -79,6 +80,32 @@ export default function ContactPage() {
                 <span className="font-medium text-sm text-[#171717]">
                   {siteSettings.location}
                 </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <InstagramIcon className="w-4 h-4 text-[#A85E43] shrink-0" />
+                <a
+                  href={siteSettings.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-sm text-[#171717] hover:text-[#A85E43] transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>@kirtidesai19</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#171717]/50" />
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <LinkedinIcon className="w-4 h-4 text-[#A85E43] shrink-0" />
+                <a
+                  href={siteSettings.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-sm text-[#171717] hover:text-[#A85E43] transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>LinkedIn Profile</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#171717]/50" />
+                </a>
               </div>
 
               <div className="pt-2 border-t border-[#171717]/10">

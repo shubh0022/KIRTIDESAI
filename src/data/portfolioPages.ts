@@ -272,7 +272,8 @@ export const portfolioSpreads: PortfolioSpread[] = [
       'Designed and curated by Kirti Desai. Open for fashion design internships, luxury atelier apprenticeships, brand collaborations, and creative inquiries.',
     metadata: [
       { label: 'CONTACT', value: 'desaikirti192004@gmail.com · (+91) 702-863-XXXX' },
-      { label: 'LINKEDIN', value: 'linkedin.com/in/kirti-desai-72251577' },
+      { label: 'LINKEDIN', value: 'linkedin.com/in/kirti-desai-723315377' },
+      { label: 'INSTAGRAM', value: '@kirtidesai19' },
       { label: 'COPYRIGHT', value: '© 2026 KIRTI DESAI · ALL RIGHTS RESERVED' },
     ],
   },

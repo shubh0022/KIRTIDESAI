@@ -8,6 +8,7 @@ import { aboutMeContent, educationHistory, expertiseList, technicalSkills, langu
 import SectionHeader from '@/components/ui/SectionHeader';
 import TechnicalStamp from '@/components/ui/TechnicalStamp';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import { InstagramIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
 
 export default function AboutPage() {
   return (
@@ -154,6 +155,20 @@ export default function AboutPage() {
               <p><strong className="text-[#161616]">EMAIL:</strong> {siteSettings.email}</p>
               <p><strong className="text-[#161616]">PHONE:</strong> {siteSettings.phone}</p>
               <p><strong className="text-[#161616]">LOCATION:</strong> {siteSettings.location}</p>
+              <p className="flex items-center gap-1.5 pt-1">
+                <InstagramIcon className="w-3.5 h-3.5 text-[#A95F45]" />
+                <strong className="text-[#161616]">INSTAGRAM:</strong>{' '}
+                <a href={siteSettings.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-[#A95F45] underline decoration-[#A95F45]/40 transition-colors">
+                  @kirtidesai19
+                </a>
+              </p>
+              <p className="flex items-center gap-1.5">
+                <LinkedinIcon className="w-3.5 h-3.5 text-[#A95F45]" />
+                <strong className="text-[#161616]">LINKEDIN:</strong>{' '}
+                <a href={siteSettings.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[#A95F45] underline decoration-[#A95F45]/40 transition-colors">
+                  Kirti Desai
+                </a>
+              </p>
             </div>
           </div>
         </div>

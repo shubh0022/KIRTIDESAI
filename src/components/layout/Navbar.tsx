@@ -1,18 +1,21 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Heart, ShoppingBag, User, Menu } from 'lucide-react';
-import MobileMenu from './MobileMenu';
+import { Search, Heart, ShoppingBag, User } from 'lucide-react';
+import NavigationMenu from './NavigationMenu';
+import HamburgerButton from './HamburgerButton';
 import Logo from '../ui/Logo';
 import { useAtelier } from '@/context/AtelierContext';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const pathname = usePathname();
   const { openSearch, openWishlist, openBag, openAccount, wishlist, bagCount } = useAtelier();
+  const desktopTriggerRef = useRef<HTMLButtonElement>(null);
+  const mobileTriggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,21 +30,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Primary navigation links for Desktop (Exact specification)
   const primaryLinks = [
     { label: 'WORK', href: '/work' },
-    { label: 'PROCESS', href: '/process' },
-    { label: 'CRAFT', href: '/craft' },
-    { label: 'EXPERIENCE', href: '/experience' },
+    { label: 'COLLECTION', href: '/work' },
+    { label: 'STYLING', href: '/craft' },
+    { label: 'ATELIER', href: '/process' },
+    { label: 'JOURNAL', href: '/journal' },
     { label: 'ABOUT', href: '/about' },
-    { label: 'ARCHIVE', href: '/archive' },
   ];
 
+  // Tablet navigation links (condensed)
   const tabletLinks = [
     { label: 'WORK', href: '/work' },
-    { label: 'PROCESS', href: '/process' },
-    { label: 'CRAFT', href: '/craft' },
-    { label: 'EXPERIENCE', href: '/experience' },
+    { label: 'COLLECTION', href: '/work' },
+    { label: 'STYLING', href: '/craft' },
+    { label: 'ATELIER', href: '/process' },
   ];
+
+  const handleToggleMenu = (isDesktop: boolean) => {
+    setIsNavMenuOpen((prev) => !prev);
+  };
 
   return (
     <>
@@ -60,13 +69,15 @@ export default function Navbar() {
 
           {/* CENTER: DESKTOP PRIMARY EDITORIAL NAVIGATION (1200px+) */}
           <nav
-            className="hidden xl:flex items-center gap-7 2xl:gap-9"
+            className="hidden xl:flex items-center gap-7 2xl:gap-8"
             aria-label="Primary Navigation"
           >
             {primaryLinks.map((link) => {
               const isActive =
-                (link.href === '/work' && (pathname === '/' || pathname === '/work' || pathname.startsWith('/work/'))) ||
-                (link.href !== '/work' && (pathname === link.href || pathname.startsWith(`${link.href}/`)));
+                (link.href === '/work' &&
+                  (pathname === '/' || pathname === '/work' || pathname.startsWith('/work/'))) ||
+                (link.href !== '/work' &&
+                  (pathname === link.href || pathname.startsWith(`${link.href}/`)));
 
               return (
                 <Link
@@ -97,8 +108,10 @@ export default function Navbar() {
           >
             {tabletLinks.map((link) => {
               const isActive =
-                (link.href === '/work' && (pathname === '/' || pathname === '/work' || pathname.startsWith('/work/'))) ||
-                (link.href !== '/work' && (pathname === link.href || pathname.startsWith(`${link.href}/`)));
+                (link.href === '/work' &&
+                  (pathname === '/' || pathname === '/work' || pathname.startsWith('/work/'))) ||
+                (link.href !== '/work' &&
+                  (pathname === link.href || pathname.startsWith(`${link.href}/`)));
 
               return (
                 <Link
@@ -122,10 +135,11 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* RIGHT: DESKTOP UTILITY ACTIONS (1200px+) */}
-          <div className="hidden xl:flex items-center gap-5 2xl:gap-6 font-sans text-[11px] 2xl:text-xs tracking-[0.16em] uppercase font-medium text-[#171717]/80">
+          {/* RIGHT: DESKTOP UTILITY & 3-LINE HAMBURGER MENU (1200px+) */}
+          <div className="hidden xl:flex items-center gap-6 font-sans text-[11px] 2xl:text-xs tracking-[0.16em] uppercase font-medium text-[#171717]/80">
             {/* SEARCH */}
             <button
+              type="button"
               onClick={openSearch}
               className="flex items-center gap-1.5 hover:text-[#A85E43] transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#A85E43] py-1"
               aria-label="Open search archive"
@@ -134,69 +148,20 @@ export default function Navbar() {
               <span>SEARCH</span>
             </button>
 
-            {/* SHOP */}
-            <Link
-              href="/shop"
-              className={`hover:text-[#A85E43] transition-colors duration-200 py-1 ${
-                pathname === '/shop' ? 'text-[#171717] font-semibold' : ''
-              }`}
-            >
-              SHOP
-            </Link>
-
-            {/* CUSTOM */}
-            <Link
-              href="/custom"
-              className={`hover:text-[#A85E43] transition-colors duration-200 py-1 ${
-                pathname === '/custom' ? 'text-[#171717] font-semibold' : ''
-              }`}
-            >
-              CUSTOM
-            </Link>
-
-            {/* WISHLIST ♡ */}
-            <button
-              onClick={openWishlist}
-              className="relative flex items-center gap-1 hover:text-[#A85E43] transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#A85E43] py-1"
-              aria-label={`Open wishlist with ${wishlist.length} items`}
-            >
-              <Heart
-                className={`w-3.5 h-3.5 ${
-                  wishlist.length > 0 ? 'text-[#A85E43] fill-[#A85E43]' : ''
-                }`}
-              />
-              {wishlist.length > 0 && (
-                <span className="font-mono text-[9px] text-[#A85E43] font-bold">
-                  {wishlist.length}
-                </span>
-              )}
-            </button>
-
-            {/* BAG */}
-            <button
-              onClick={openBag}
-              className="relative flex items-center gap-1 hover:text-[#A85E43] transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#A85E43] py-1"
-              aria-label={`Open shopping bag with ${bagCount} items`}
-            >
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span>BAG {bagCount > 0 ? `(${bagCount})` : ''}</span>
-            </button>
-
-            {/* ACCOUNT */}
-            <button
-              onClick={openAccount}
-              className="flex items-center gap-1.5 hover:text-[#A85E43] transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#A85E43] py-1"
-              aria-label="Open client account and concierge"
-            >
-              <User className="w-3.5 h-3.5" />
-              <span>ACCOUNT</span>
-            </button>
+            {/* DESKTOP 3-LINE ANIMATED HAMBURGER MENU BUTTON (CONTAINS ALL OPTIONS) */}
+            <HamburgerButton
+              isOpen={isNavMenuOpen}
+              onClick={() => handleToggleMenu(true)}
+              ariaControls="fullscreen-navigation-menu"
+              showLabel={true}
+            />
           </div>
 
           {/* RIGHT: TABLET & MOBILE UTILITY ACTIONS */}
-          <div className="flex xl:hidden items-center gap-3 sm:gap-4 font-sans text-xs text-[#171717]">
+          <div className="flex xl:hidden items-center gap-2 sm:gap-3 font-sans text-xs text-[#171717]">
             {/* Mobile / Tablet Search */}
             <button
+              type="button"
               onClick={openSearch}
               className="p-2 hover:text-[#A85E43] transition-colors cursor-pointer"
               aria-label="Search"
@@ -204,51 +169,23 @@ export default function Navbar() {
               <Search className="w-4 h-4" />
             </button>
 
-            {/* Mobile / Tablet Wishlist */}
-            <button
-              onClick={openWishlist}
-              className="p-2 hover:text-[#A85E43] transition-colors relative cursor-pointer"
-              aria-label="Open wishlist"
-            >
-              <Heart
-                className={`w-4 h-4 ${
-                  wishlist.length > 0 ? 'text-[#A85E43] fill-[#A85E43]' : ''
-                }`}
-              />
-              {wishlist.length > 0 && (
-                <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#A85E43]" />
-              )}
-            </button>
-
-            {/* Mobile / Tablet Bag */}
-            <button
-              onClick={openBag}
-              className="p-2 hover:text-[#A85E43] transition-colors relative cursor-pointer"
-              aria-label="Open bag"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              {bagCount > 0 && (
-                <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#A85E43]" />
-              )}
-            </button>
-
-            {/* Mobile / Tablet Hamburger */}
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="p-2 hover:text-[#A85E43] transition-colors cursor-pointer"
-              aria-label="Open navigation menu"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
+            {/* Mobile / Tablet Animated 3-Line Hamburger */}
+            <HamburgerButton
+              isOpen={isNavMenuOpen}
+              onClick={() => handleToggleMenu(false)}
+              ariaControls="fullscreen-navigation-menu"
+              showLabel={false}
+            />
           </div>
         </div>
       </header>
 
-      {/* Fullscreen Editorial Mobile / Tablet Navigation Panel */}
-      <MobileMenu
-        isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
+      {/* Modern Fullscreen / Comprehensive Navigation Menu */}
+      <NavigationMenu
+        isOpen={isNavMenuOpen}
+        onClose={() => setIsNavMenuOpen(false)}
         currentPath={pathname}
+        triggerRef={desktopTriggerRef}
       />
     </>
   );
