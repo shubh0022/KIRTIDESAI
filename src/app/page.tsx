@@ -14,31 +14,31 @@ import ContactCTA from '@/components/home/ContactCTA';
 export default function Home() {
   return (
     <div className="flex flex-col w-full overflow-hidden">
-      {/* 01 / 09 — Cover & Asymmetric Hero */}
+      {/* Cover & Asymmetric Hero */}
       <Hero />
 
-      {/* 02 / 09 — About The Designer */}
+      {/* About The Designer */}
       <IntroStatement />
 
-      {/* 03 / 09 — Selected Work (5 Curated Case Studies) */}
+      {/* Selected Work (Curated Case Studies) */}
       <SelectedWork />
 
-      {/* 04 / 09 — Studio Methodology (How I Make) */}
+      {/* Studio Methodology (How I Make) */}
       <ProcessStrip />
 
       {/* Interactive Atelier Studio Table */}
       <StudioTable />
 
-      {/* 05 / 09 — Core Philosophy: Material → Craft → Garment → Identity */}
+      {/* Core Philosophy: Material → Craft → Garment → Identity */}
       <MaterialToMemory />
 
-      {/* 06 / 09 — Craft Research & Material Studies */}
+      {/* Craft Research & Material Studies */}
       <CraftHighlight />
 
-      {/* 07 / 09 — Experience & Fashion Week Runways */}
+      {/* Experience & Fashion Week Runways */}
       <ExperienceTimeline />
 
-      {/* 09 / 09 — Direct Inquiries & Contact Banner */}
+      {/* Direct Inquiries & Contact Banner */}
       <ContactCTA />
     </div>
   );

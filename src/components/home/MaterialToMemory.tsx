@@ -15,13 +15,9 @@ export default function MaterialToMemory() {
 
   return (
     <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-[#161616]/10">
-      {/* Index Stamp 05 / 09 */}
+      {/* Section Header */}
       <div className="flex items-center gap-3 mb-8">
-        <span className="font-mono text-xs text-[#A95F45] tracking-[0.25em] font-semibold">
-          05 / 09
-        </span>
-        <span className="w-8 h-[1px] bg-[#A95F45]/30" />
-        <span className="font-mono text-[10px] text-[#161616]/60 tracking-widest uppercase">
+        <span className="font-mono text-xs text-[#A95F45] tracking-[0.25em] font-semibold uppercase">
           CORE PHILOSOPHY
         </span>
       </div>

@@ -24,13 +24,9 @@ export default function Hero() {
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-6 xl:col-span-5 flex flex-col justify-center"
         >
-          {/* 1. Page Marker 01 / 09 & Brand Anchor */}
+          {/* Brand Anchor */}
           <div className="flex items-center gap-3 mb-4">
-            <span className="font-mono text-xs text-[#A85E43] tracking-[0.28em] font-semibold">
-              01 / 09
-            </span>
-            <span className="w-8 h-[1px] bg-[#A85E43]/40" />
-            <span className="font-mono text-[10px] tracking-[0.25em] text-[#171717]/65 uppercase font-medium">
+            <span className="font-mono text-xs tracking-[0.25em] text-[#A85E43] uppercase font-semibold">
               KIRTI DESAI · FASHION DESIGN
             </span>
           </div>

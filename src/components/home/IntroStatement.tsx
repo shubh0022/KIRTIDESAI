@@ -11,13 +11,9 @@ import TechnicalStamp from '../ui/TechnicalStamp';
 export default function IntroStatement() {
   return (
     <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-[#161616]/10 relative" id="about-preview">
-      {/* Index Stamp 02 / 09 */}
+      {/* Section Header */}
       <div className="flex items-center gap-3 mb-10">
-        <span className="font-mono text-xs text-[#A95F45] tracking-[0.25em] font-semibold">
-          02 / 09
-        </span>
-        <span className="w-8 h-[1px] bg-[#A95F45]/30" />
-        <span className="font-mono text-[10px] text-[#161616]/60 tracking-widest uppercase">
+        <span className="font-mono text-xs text-[#A95F45] tracking-[0.25em] font-semibold uppercase">
           ABOUT THE DESIGNER
         </span>
       </div>
