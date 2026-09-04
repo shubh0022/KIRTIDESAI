@@ -300,10 +300,9 @@ export default function NavigationMenu({
                 <div className="space-y-2">
                   {primaryLinks.map((link) => {
                     const isActive =
-                      (link.href === '/work' &&
-                        (currentPath === '/' || currentPath === '/work' || currentPath.startsWith('/work/'))) ||
-                      (link.href !== '/work' &&
-                        (currentPath === link.href || currentPath.startsWith(`${link.href}/`)));
+                      link.href === '/work'
+                        ? currentPath === '/work' || currentPath.startsWith('/work/')
+                        : currentPath === link.href || currentPath.startsWith(`${link.href}/`);
 
                     return (
                       <motion.div key={link.label} variants={itemVariants}>

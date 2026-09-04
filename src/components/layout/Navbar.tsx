@@ -33,7 +33,7 @@ export default function Navbar() {
   // Primary navigation links for Desktop (Exact specification)
   const primaryLinks = [
     { label: 'WORK', href: '/work' },
-    { label: 'COLLECTION', href: '/work' },
+    { label: 'COLLECTION', href: '/collection' },
     { label: 'STYLING', href: '/craft' },
     { label: 'ATELIER', href: '/process' },
     { label: 'JOURNAL', href: '/journal' },
@@ -43,7 +43,7 @@ export default function Navbar() {
   // Tablet navigation links (condensed)
   const tabletLinks = [
     { label: 'WORK', href: '/work' },
-    { label: 'COLLECTION', href: '/work' },
+    { label: 'COLLECTION', href: '/collection' },
     { label: 'STYLING', href: '/craft' },
     { label: 'ATELIER', href: '/process' },
   ];
@@ -74,10 +74,9 @@ export default function Navbar() {
           >
             {primaryLinks.map((link) => {
               const isActive =
-                (link.href === '/work' &&
-                  (pathname === '/' || pathname === '/work' || pathname.startsWith('/work/'))) ||
-                (link.href !== '/work' &&
-                  (pathname === link.href || pathname.startsWith(`${link.href}/`)));
+                link.href === '/work'
+                  ? pathname === '/work' || pathname.startsWith('/work/')
+                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
 
               return (
                 <Link
@@ -108,10 +107,9 @@ export default function Navbar() {
           >
             {tabletLinks.map((link) => {
               const isActive =
-                (link.href === '/work' &&
-                  (pathname === '/' || pathname === '/work' || pathname.startsWith('/work/'))) ||
-                (link.href !== '/work' &&
-                  (pathname === link.href || pathname.startsWith(`${link.href}/`)));
+                link.href === '/work'
+                  ? pathname === '/work' || pathname.startsWith('/work/')
+                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
 
               return (
                 <Link
