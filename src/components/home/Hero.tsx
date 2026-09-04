@@ -96,24 +96,16 @@ export default function Hero() {
             {/* Layer B: Delicate Hand-Drawn Fashion Sketches & Pattern Drafting Blueprint */}
             <FashionDraftingOverlay className="-z-10" />
 
-            {/* Layer C: Real Authentic Kirti Desai Photograph Seamlessly Integrated */}
-            <div className="relative w-[86%] sm:w-[84%] h-[92%] sm:h-[90%] group">
-              <div
-                className="relative w-full h-full overflow-hidden transition-transform duration-700 ease-out group-hover:scale-[1.015]"
-                style={{
-                  WebkitMaskImage:
-                    'radial-gradient(ellipse 95% 91% at 50% 46%, black 72%, rgba(0,0,0,0.5) 86%, transparent 100%)',
-                  maskImage:
-                    'radial-gradient(ellipse 95% 91% at 50% 46%, black 72%, rgba(0,0,0,0.5) 86%, transparent 100%)',
-                }}
-              >
+            {/* Layer C: Real Authentic Kirti Desai Cutout Seamlessly Matching Page Background */}
+            <div className="relative w-full h-[94%] flex flex-col justify-between group">
+              <div className="relative w-full flex-1 transition-transform duration-700 ease-out group-hover:scale-[1.02]">
                 <Image
-                  src="/images/portrait/kirti-portrait-red-curtain.jpg"
+                  src="/images/hero/kirti-hero-red-dress-nobg.png"
                   alt="Kirti Desai — Fashion Designer & Atelier Creative Director"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 650px"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="object-contain object-bottom transition-transform duration-700 ease-out drop-shadow-[0_12px_24px_rgba(23,23,23,0.06)]"
                 />
               </div>
 
