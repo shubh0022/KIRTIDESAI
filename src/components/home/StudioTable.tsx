@@ -53,11 +53,11 @@ export default function StudioTable() {
   const [activeItem, setActiveItem] = useState<StudioItem>(items[0]);
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-[#161616]/10" id="studio-table">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+    <section className="py-20 sm:py-28 md:py-32 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto border-t border-[#161616]/10" id="studio-table">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6">
         <div>
           <TechnicalStamp label="ATELIER INTERACTIVE" value="STUDIO TABLE" variant="clay" />
-          <h2 className="font-editorial-serif text-5xl sm:text-6xl text-[#161616] font-normal tracking-tight leading-[0.95] mt-4">
+          <h2 className="font-editorial-serif text-5xl sm:text-6xl lg:text-7xl text-[#161616] font-normal tracking-tight leading-[0.95] mt-4">
             THE STUDIO <span className="italic text-[#A95F45]">TABLE</span>
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#4A4A4A] mt-3 font-light max-w-xl leading-relaxed">
@@ -66,7 +66,7 @@ export default function StudioTable() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
         {/* Left Interactive Item Selector List */}
         <div className="lg:col-span-5 space-y-3">
           {items.map((item) => {

@@ -14,7 +14,7 @@ export default function MaterialToMemory() {
   ];
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-[#161616]/10">
+    <section className="py-20 sm:py-28 md:py-32 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto border-t border-[#161616]/10">
       {/* Section Header */}
       <div className="flex items-center gap-3 mb-8">
         <span className="font-mono text-xs text-[#A95F45] tracking-[0.25em] font-semibold uppercase">
@@ -22,8 +22,8 @@ export default function MaterialToMemory() {
         </span>
       </div>
 
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <h2 className="font-editorial-serif text-5xl sm:text-6xl text-[#161616] font-normal tracking-tight leading-[0.95]">
+      <div className="text-center max-w-4xl mx-auto mb-16">
+        <h2 className="font-editorial-serif text-5xl sm:text-6xl lg:text-7xl text-[#161616] font-normal tracking-tight leading-[0.95]">
           MATERIAL <span className="text-[#A95F45]">→</span> CRAFT <span className="text-[#A95F45]">→</span> GARMENT <span className="text-[#A95F45]">→</span> MEMORY
         </h2>
         <p className="font-sans text-sm sm:text-base text-[#4A4A4A] mt-4 font-light leading-relaxed">
@@ -31,7 +31,7 @@ export default function MaterialToMemory() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
         {steps.map((step, idx) => (
           <ScrollReveal key={step.title} delay={idx * 0.08} direction="up">
             <div className="p-6 bg-[#FAF7F2] border border-[#161616]/10 hover:border-[#A95F45] transition-all duration-300 h-full flex flex-col justify-between group">

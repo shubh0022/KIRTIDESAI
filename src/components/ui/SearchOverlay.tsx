@@ -150,7 +150,7 @@ export default function SearchOverlay() {
       aria-label="Search Kirti Desai Portfolio"
     >
       {/* Top Bar */}
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between border-b border-[#171717]/10">
+      <div className="w-full max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-6 flex items-center justify-between border-b border-[#171717]/10">
         <div className="flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-[#A85E43] animate-pulse" />
           <span className="font-mono text-[11px] tracking-[0.25em] text-[#171717]/70 uppercase">

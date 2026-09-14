@@ -26,7 +26,7 @@ export default function VisualDiaryPage() {
   };
 
   return (
-    <div className="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div className="pt-32 pb-24 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[#161616]/10 gap-6">
         <SectionHeader

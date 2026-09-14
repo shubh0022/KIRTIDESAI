@@ -7,7 +7,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function CollectionsStrip() {
   return (
-    <section className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 max-w-[1600px] mx-auto border-t border-[#171717]/10">
+    <section className="py-20 sm:py-28 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto border-t border-[#171717]/10">
       <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6">
         <div className="space-y-2">
           <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs tracking-[0.26em] text-[#A85E43] uppercase font-semibold">

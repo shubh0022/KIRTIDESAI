@@ -12,7 +12,7 @@ import { InstagramIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
 
 export default function AboutPage() {
   return (
-    <div className="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div className="pt-32 pb-24 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto">
       {/* Top Section */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-[#161616]/10">
         {/* Real Photograph */}

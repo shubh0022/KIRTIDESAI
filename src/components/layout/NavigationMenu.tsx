@@ -288,7 +288,7 @@ export default function NavigationMenu({
             </div>
 
             {/* 2. MAIN BODY: DUAL EDITORIAL & COMMERCE COLUMNS */}
-            <div className="max-w-7xl mx-auto w-full px-6 sm:px-10 lg:px-16 py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 my-auto">
+            <div className="max-w-[1700px] mx-auto w-full px-6 sm:px-10 lg:px-16 py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 my-auto">
               {/* LEFT COLUMN: PRIMARY EDITORIAL NAVIGATION */}
               <nav className="lg:col-span-7 space-y-6" aria-label="Primary Chapters">
                 <div className="flex items-center justify-between pb-3 border-b border-[#171717]/10">
@@ -457,7 +457,7 @@ export default function NavigationMenu({
 
             {/* 3. FOOTER STRIP: SOCIALS, EMAIL, AND DIRECT CONTACT */}
             <div className="shrink-0 border-t border-[#171717]/10 bg-[#FAF7F2] px-6 sm:px-10 lg:px-16 py-6 font-mono text-xs text-[#171717]/80">
-              <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="max-w-[1700px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                 {/* Left: Direct Contact Information */}
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <a

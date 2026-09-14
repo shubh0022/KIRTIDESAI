@@ -121,7 +121,7 @@ export default function CollectionPage() {
   });
 
   return (
-    <div className="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div className="pt-32 pb-24 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto">
       {/* Editorial Header */}
       <SectionHeader
         stamp="ATELIER COLLECTIONS"

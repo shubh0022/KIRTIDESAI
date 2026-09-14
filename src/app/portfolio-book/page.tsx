@@ -30,7 +30,7 @@ export default function PortfolioBookPage() {
   };
 
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto min-h-screen flex flex-col justify-between">
+    <div className="pt-28 pb-24 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto min-h-screen flex flex-col justify-between">
       {/* Top Controls Bar */}
       <div className="no-print pb-6 border-b border-[#161616]/10 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4">

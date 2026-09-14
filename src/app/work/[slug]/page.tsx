@@ -36,7 +36,7 @@ export default async function ProjectDetailPage({
   const nextProject = projects[(projectIndex + 1) % projects.length];
 
   return (
-    <article className="pt-28 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <article className="pt-28 pb-24 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1600px] mx-auto">
       {/* Top Back Breadcrumb */}
       <div className="pb-8 mb-8 border-b border-[#161616]/10 flex items-center justify-between">
         <Link

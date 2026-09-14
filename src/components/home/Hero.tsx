@@ -9,7 +9,7 @@ import FashionDraftingOverlay from '../ui/FashionDraftingOverlay';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[88vh] lg:min-h-[92vh] flex flex-col justify-between pt-24 sm:pt-28 pb-8 px-6 sm:px-10 lg:px-14 max-w-[1600px] mx-auto overflow-hidden">
+    <section className="relative min-h-[88vh] lg:min-h-[92vh] flex flex-col justify-between pt-24 sm:pt-28 pb-8 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto overflow-hidden">
       {/* Editorial Vertical Grainline Pattern Guide (Desktop Margin) */}
       <div className="hidden 2xl:flex fixed left-5 top-1/2 -translate-y-1/2 z-20 flex-col items-center gap-3 pointer-events-none font-mono text-[9px] text-[#171717]/40 tracking-[0.3em] uppercase select-none">
         <span className="text-[#A85E43]">↑</span>

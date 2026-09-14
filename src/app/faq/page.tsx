@@ -33,7 +33,7 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto">
+    <div className="pt-32 pb-24 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1400px] mx-auto">
       <SectionHeader
         stamp="CLIENT INQUIRIES"
         stampValue="ATELIER FAQ"

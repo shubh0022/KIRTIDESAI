@@ -8,7 +8,7 @@ import { InstagramIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
 
 export default function ContactCTA() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-[#161616]/10" id="contact">
+    <section className="py-20 sm:py-28 md:py-32 px-6 sm:px-10 lg:px-14 xl:px-16 max-w-[1700px] mx-auto border-t border-[#161616]/10" id="contact">
       {/* Section Header */}
       <div className="flex items-center gap-3 mb-8">
         <span className="font-mono text-xs text-[#A95F45] tracking-[0.25em] font-semibold uppercase">

@@ -11,8 +11,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#FAF7F2] border-t border-[#171717]/15 pt-16 pb-12 px-6 md:px-12 mt-20">
-      <div className="max-w-7xl mx-auto">
+    <footer className="bg-[#FAF7F2] border-t border-[#171717]/15 pt-16 pb-12 px-6 sm:px-10 lg:px-14 xl:px-16 mt-20">
+      <div className="max-w-[1700px] mx-auto">
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-16 border-b border-[#171717]/10">
           {/* Brand Identity & Logo */}
