@@ -30,6 +30,7 @@ import {
   TrendingUp,
   Mail,
   Send,
+  LogOut,
 } from 'lucide-react';
 import {
   KDButton,
@@ -126,9 +127,24 @@ export default function AtelierControlAdminPage() {
     carrier: 'DHL Express Luxury Courier',
   });
 
+  const [adminUser, setAdminUser] = useState<any>(null);
+
   // Fetch all backend admin data
   const fetchData = async () => {
     try {
+      // Verify administrative clearance server-side
+      const authRes = await fetch('/api/atelier/auth/admin/session');
+      if (!authRes.ok) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const authData = await authRes.json();
+      if (!authData.authenticated) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      setAdminUser(authData.user);
+
       const [ordRes, projRes, quoteRes, aptRes, invRes, passRes, auditRes, analRes, tickRes] =
         await Promise.all([
           fetch('/api/atelier/orders'),
@@ -166,6 +182,11 @@ export default function AtelierControlAdminPage() {
     } catch (err) {
       console.error('Failed to load admin data', err);
     }
+  };
+
+  const handleLogout = async () => {
+    await fetch('/api/atelier/auth/admin/logout', { method: 'POST' });
+    window.location.href = '/admin/login';
   };
 
   useEffect(() => {
@@ -370,13 +391,25 @@ export default function AtelierControlAdminPage() {
             </kbd>
           </button>
 
-          <Link
-            href="/account"
+          {adminUser && (
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#FAF7F2] border border-[#171717]/10 font-mono text-[10px]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#A85E43]" />
+              <span className="text-[#171717]/60">STAFF:</span>
+              <span className="font-semibold text-[#171717]">{adminUser.name || 'Admin'}</span>
+              <span className="px-1.5 py-0.5 bg-[#A85E43]/10 text-[#A85E43] text-[9px] uppercase tracking-wider font-semibold">
+                {adminUser.role}
+              </span>
+            </div>
+          )}
+
+          <button
+            onClick={handleLogout}
             className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#171717] hover:bg-[#A85E43] text-[#FAF7F2] font-mono text-[10px] uppercase tracking-widest transition-colors cursor-pointer"
+            title="Terminate atelier administrative session"
           >
-            <span>MY ATELIER (CLIENT VIEW)</span>
-            <ArrowLeft className="w-3 h-3 rotate-180" />
-          </Link>
+            <LogOut className="w-3 h-3" />
+            <span>SIGN OUT</span>
+          </button>
         </div>
       </div>
 

@@ -90,7 +90,7 @@ export default function CollectionPage() {
       season: 'Curated Presentation',
       category: 'WEARABLE ART',
       discipline: 'Experimental Silhouette & Texture',
-      image: '/images/projects/card-04-wearable-art.jpg',
+      image: '/images/projects/card-05-wearable-art.jpg',
       description:
         'A high-contrast conceptual study exploring tactile fear and psychological catharsis through distressed textiles, crimson draping, and sculptural forms.',
       materials: ['Textured Cotton Gauze', 'Hand-Distressed Silk', 'Crimson Pigments'],
@@ -104,7 +104,7 @@ export default function CollectionPage() {
       season: 'Modular Utility',
       category: 'MODULAR DESIGN',
       discipline: 'Production Calibration & Sizing',
-      image: '/images/projects/card-03-merchandising.jpg',
+      image: '/images/projects/card-04-merchandising.jpg',
       description:
         'Dual-wear functional utility jumpsuit engineered with clean-finish enclosed seams, calibrated tech pack grading, and industrial wash durability.',
       materials: ['Midweight Cotton Twill', 'Concealed Reversible Zippers', 'Bar-Tack Reinforcements'],

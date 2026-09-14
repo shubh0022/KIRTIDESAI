@@ -13,15 +13,46 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     organization: '',
-    roleInterest: 'INTERNSHIP',
+    roleInterest: 'FASHION DESIGN',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          projectType: formData.roleInterest,
+          message: `${formData.organization ? `[Organization: ${formData.organization}]\n` : ''}${formData.message}`,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMessage(data.error || 'Failed to submit inquiry.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      setIsSubmitted(true);
+    } catch {
+      setErrorMessage('Network communication error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -30,7 +61,7 @@ export default function ContactPage() {
         stamp="INITIATE CONVERSATION"
         stampValue="LET'S MAKE SOMETHING"
         title="Contact & Inquiries"
-        subtitle="Open for design internships, luxury atelier apprenticeships, runway collaborations, and academic reviews."
+        subtitle="Open for design commissions, luxury atelier apprenticeships, runway collaborations, and academic reviews."
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-12 items-start">
@@ -120,17 +151,17 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Right Column: Authentic Editorial Red Dress Photograph (Matching Screen 09) */}
+        {/* Right Column: Authentic Editorial Photograph */}
         <div className="lg:col-span-6">
           <div className="relative aspect-[3/4] w-full max-w-md mx-auto bg-[#FAF7F2] p-3.5 border border-[#171717]/15 shadow-xl group">
             <div className="relative w-full h-full overflow-hidden bg-[#E5D8C8]/40">
               <Image
-                src="/images/portrait/kirti-portrait-red-shoulder.jpg"
+                src="/images/hero/kirti-hero-editorial-desktop.webp"
                 alt="Kirti Desai — Fashion Designer"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 450px"
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-contain object-bottom group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
           </div>
@@ -143,24 +174,30 @@ export default function ContactPage() {
           <div className="bg-[#FAF7F2] p-8 sm:p-12 border border-[#171717]/15">
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">
-                <CheckCircle2 className="w-12 h-12 text-[#A95F45] mx-auto" />
-                <h3 className="font-editorial-serif text-3xl text-[#161616]">
+                <CheckCircle2 className="w-12 h-12 text-[#A85E43] mx-auto" />
+                <h3 className="font-editorial-serif text-3xl text-[#171717]">
                   Thank you for reaching out.
                 </h3>
-                <p className="font-sans text-sm text-[#4A4A4A] max-w-md mx-auto font-light leading-relaxed">
-                  Your message has been recorded. Kirti will review your inquiry and respond promptly.
+                <p className="font-sans text-sm text-[#171717]/75 max-w-md mx-auto font-light leading-relaxed">
+                  Your inquiry has been recorded in the atelier registry. Kirti will review your project and respond promptly.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="mt-6 px-6 py-2.5 bg-[#161616] text-[#FAF7F2] font-mono text-xs uppercase tracking-widest cursor-pointer"
+                  className="mt-6 px-6 py-2.5 bg-[#171717] hover:bg-[#A85E43] text-[#FAF7F2] font-mono text-xs uppercase tracking-widest cursor-pointer transition-colors"
                 >
-                  SEND ANOTHER MESSAGE
+                  SEND ANOTHER INQUIRY
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {errorMessage && (
+                  <div className="p-3 bg-[#A85E43]/10 border border-[#A85E43]/30 font-mono text-[11px] text-[#A85E43]">
+                    {errorMessage}
+                  </div>
+                )}
+
                 <div>
-                  <label className="font-mono text-[10px] text-[#161616]/60 uppercase tracking-widest block mb-2">
+                  <label className="font-mono text-[10px] text-[#171717]/70 uppercase tracking-widest block mb-2 font-semibold">
                     YOUR NAME *
                   </label>
                   <input
@@ -169,13 +206,13 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Elena Rossi"
-                    className="w-full bg-[#F4F0E8] border border-[#161616]/15 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A95F45]"
+                    className="w-full bg-[#F4F0E8] border border-[#171717]/20 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A85E43]"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="font-mono text-[10px] text-[#161616]/60 uppercase tracking-widest block mb-2">
+                    <label className="font-mono text-[10px] text-[#171717]/70 uppercase tracking-widest block mb-2 font-semibold">
                       EMAIL ADDRESS *
                     </label>
                     <input
@@ -184,12 +221,27 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. elena@atelier.com"
-                      className="w-full bg-[#F4F0E8] border border-[#161616]/15 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A95F45]"
+                      className="w-full bg-[#F4F0E8] border border-[#171717]/20 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A85E43]"
                     />
                   </div>
 
                   <div>
-                    <label className="font-mono text-[10px] text-[#161616]/60 uppercase tracking-widest block mb-2">
+                    <label className="font-mono text-[10px] text-[#171717]/70 uppercase tracking-widest block mb-2">
+                      PHONE NUMBER (OPTIONAL)
+                    </label>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="+91 / International"
+                      className="w-full bg-[#F4F0E8] border border-[#171717]/20 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A85E43]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="font-mono text-[10px] text-[#171717]/70 uppercase tracking-widest block mb-2">
                       ORGANIZATION / ATELIER
                     </label>
                     <input
@@ -197,30 +249,31 @@ export default function ContactPage() {
                       value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                       placeholder="e.g. Design Studio / Fashion House"
-                      className="w-full bg-[#F4F0E8] border border-[#161616]/15 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A95F45]"
+                      className="w-full bg-[#F4F0E8] border border-[#171717]/20 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A85E43]"
                     />
+                  </div>
+
+                  <div>
+                    <label className="font-mono text-[10px] text-[#171717]/70 uppercase tracking-widest block mb-2 font-semibold">
+                      PROJECT CATEGORY *
+                    </label>
+                    <select
+                      value={formData.roleInterest}
+                      onChange={(e) => setFormData({ ...formData, roleInterest: e.target.value })}
+                      className="w-full bg-[#F4F0E8] border border-[#171717]/20 p-3.5 text-xs font-mono uppercase focus:outline-none focus:border-[#A85E43]"
+                    >
+                      <option value="FASHION DESIGN">FASHION DESIGN</option>
+                      <option value="COSTUME">COSTUME DESIGN</option>
+                      <option value="STYLING">EDITORIAL STYLING</option>
+                      <option value="CRAFT">CRAFT RESEARCH & STUDY</option>
+                      <option value="RESEARCH">TEXTILE RESEARCH</option>
+                      <option value="CUSTOM PROJECT">CUSTOM PROJECT / BESPOKE</option>
+                    </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="font-mono text-[10px] text-[#161616]/60 uppercase tracking-widest block mb-2">
-                    NATURE OF INQUIRY
-                  </label>
-                  <select
-                    value={formData.roleInterest}
-                    onChange={(e) => setFormData({ ...formData, roleInterest: e.target.value })}
-                    className="w-full bg-[#F4F0E8] border border-[#161616]/15 p-3.5 text-xs font-mono uppercase focus:outline-none focus:border-[#A95F45]"
-                  >
-                    <option value="INTERNSHIP">FASHION DESIGN INTERNSHIP</option>
-                    <option value="APPRENTICESHIP">ATELIER APPRENTICESHIP</option>
-                    <option value="RUNWAY">RUNWAY / STYLING COLLABORATION</option>
-                    <option value="ACADEMIC">ACADEMIC / JURY REVIEW</option>
-                    <option value="OTHER">GENERAL INQUIRY</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="font-mono text-[10px] text-[#161616]/60 uppercase tracking-widest block mb-2">
+                  <label className="font-mono text-[10px] text-[#171717]/70 uppercase tracking-widest block mb-2 font-semibold">
                     MESSAGE / PROJECT CONTEXT *
                   </label>
                   <textarea
@@ -228,16 +281,21 @@ export default function ContactPage() {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Please outline the project timeline, role scope, or opportunity details..."
-                    className="w-full bg-[#F4F0E8] border border-[#161616]/15 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A95F45]"
+                    placeholder="Please outline the project timeline, scope, or commission details..."
+                    className="w-full bg-[#F4F0E8] border border-[#171717]/20 p-3.5 text-sm font-sans focus:outline-none focus:border-[#A85E43]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#161616] hover:bg-[#A95F45] text-[#FAF7F2] font-mono text-xs tracking-widest uppercase transition-colors duration-300 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-[#171717] hover:bg-[#A85E43] text-[#FAF7F2] font-mono text-xs tracking-widest uppercase transition-colors duration-300 cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2"
                 >
-                  TRANSMIT INQUIRY
+                  {isSubmitting ? (
+                    <span>TRANSMITTING INQUIRY...</span>
+                  ) : (
+                    <span>SEND INQUIRY →</span>
+                  )}
                 </button>
               </form>
             )}

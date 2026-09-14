@@ -15,6 +15,7 @@ import {
   AtelierNotification,
   AuditLogEntry,
   UserProfile,
+  UserRole,
   AnalyticsSummary,
 } from './types';
 import {
@@ -751,6 +752,57 @@ class AtelierStore {
         { date: 'Mar 2026', amount: totalRevenue },
       ],
     };
+  }
+
+  // --- USER MANAGEMENT ---
+  public getUsers(): UserProfile[] {
+    return this.data.users;
+  }
+
+  public getUserByEmail(email: string): UserProfile | undefined {
+    if (!email) return undefined;
+    const normalized = email.trim().toLowerCase();
+    return this.data.users.find((u) => u.email.toLowerCase() === normalized);
+  }
+
+  public getUserById(id: string): UserProfile | undefined {
+    return this.data.users.find((u) => u.id === id);
+  }
+
+  public upsertUser(user: Partial<UserProfile> & { email: string; name: string; role?: UserRole }): UserProfile {
+    const existingIndex = this.data.users.findIndex(
+      (u) => u.email.toLowerCase() === user.email.trim().toLowerCase()
+    );
+
+    if (existingIndex >= 0) {
+      const existing = this.data.users[existingIndex];
+      const updated: UserProfile = {
+        ...existing,
+        name: user.name || existing.name,
+        role: user.role || existing.role,
+        avatarUrl: user.avatarUrl !== undefined ? user.avatarUrl : existing.avatarUrl,
+        phone: user.phone !== undefined ? user.phone : existing.phone,
+        stylePreferences: user.stylePreferences || existing.stylePreferences,
+      };
+      this.data.users[existingIndex] = updated;
+      this.save();
+      return updated;
+    }
+
+    const newUser: UserProfile = {
+      id: user.id || `user-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+      name: user.name,
+      email: user.email.trim().toLowerCase(),
+      role: user.role || 'CLIENT',
+      avatarUrl: user.avatarUrl || '',
+      phone: user.phone || '',
+      stylePreferences: user.stylePreferences || ['Bespoke Atelier', 'Living Indian Craft'],
+      createdAt: new Date().toISOString(),
+    };
+
+    this.data.users.push(newUser);
+    this.save();
+    return newUser;
   }
 }
 

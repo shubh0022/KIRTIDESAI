@@ -123,7 +123,7 @@ export default function PortfolioBookPage() {
             <div className="pb-6 border-b border-[#161616]/10 flex items-center justify-between font-mono text-xs">
               <div className="flex items-center gap-3">
                 <span className="font-semibold text-[#A95F45]">
-                  PAGE {currentSpread.pageNumber < 10 ? `0${currentSpread.pageNumber}` : currentSpread.pageNumber} / {totalPages}
+                  PAGE {currentSpread.pageNumber < 10 ? `0${currentSpread.pageNumber}` : currentSpread.pageNumber}
                 </span>
                 <span className="text-[#161616]/30">·</span>
                 <span className="text-[#161616]/60 uppercase tracking-widest">

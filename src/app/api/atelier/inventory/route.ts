@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import store from '@/lib/atelier-db/store';
+import { getAdminSession } from '@/lib/auth/session';
 
 export async function GET() {
   const inventory = store.getInventory();
@@ -8,6 +9,14 @@ export async function GET() {
 
 export async function PATCH(req: Request) {
   try {
+    const adminSession = await getAdminSession();
+    if (!adminSession) {
+      return NextResponse.json(
+        { error: 'Administrative clearance required to modify inventory stock.' },
+        { status: 403 }
+      );
+    }
+
     const body = await req.json();
     const { id, ...updates } = body;
 

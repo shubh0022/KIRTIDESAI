@@ -1,20 +1,44 @@
 import { NextResponse } from 'next/server';
 import store from '@/lib/atelier-db/store';
+import { getAdminSession, getClientSession } from '@/lib/auth/session';
 
 export async function GET(req: Request) {
+  const adminSession = await getAdminSession();
+  const clientSession = await getClientSession();
+
+  if (!adminSession && !clientSession) {
+    return NextResponse.json(
+      { error: 'Authentication required to view concierge communications.' },
+      { status: 401 }
+    );
+  }
+
   const { searchParams } = new URL(req.url);
-  const customerId = searchParams.get('customerId') || undefined;
-  const tickets = store.getTickets(customerId);
+
+  if (adminSession) {
+    const customerId = searchParams.get('customerId') || undefined;
+    const tickets = store.getTickets(customerId);
+    return NextResponse.json({ tickets });
+  }
+
+  const tickets = store.getTickets(clientSession!.userId);
   return NextResponse.json({ tickets });
 }
 
 export async function POST(req: Request) {
   try {
+    const adminSession = await getAdminSession();
+    const clientSession = await getClientSession();
+
+    if (!adminSession && !clientSession) {
+      return NextResponse.json(
+        { error: 'Authentication required to dispatch concierge requests.' },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
     const {
-      customerId,
-      customerName,
-      customerEmail,
       subject,
       category,
       message,
@@ -26,10 +50,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Subject and message required' }, { status: 400 });
     }
 
+    const customerId = adminSession
+      ? body.customerId || 'user-client-01'
+      : clientSession!.userId;
+    const customerName = adminSession
+      ? body.customerName || 'Private Patron'
+      : clientSession!.name;
+    const customerEmail = adminSession
+      ? body.customerEmail || 'patron@kirtidesai.com'
+      : clientSession!.email;
+
     const ticket = store.createTicket(
-      customerId || 'user-client-01',
-      customerName || 'Elena Rossi',
-      customerEmail || 'elena.rossi@milanocouture.it',
+      customerId,
+      customerName,
+      customerEmail,
       subject,
       category || 'General',
       message,

@@ -75,6 +75,7 @@ export default function MyAtelierClientPage() {
   const [activeTab, setActiveTab] = useState<ClientTab>('overview');
 
   // Live state from atelier DB API
+  const [clientUser, setClientUser] = useState<any>(null);
   const [orders, setOrders] = useState<Order[]>([]);
   const [projects, setProjects] = useState<CustomProject[]>([]);
   const [quotes, setQuotes] = useState<Quote[]>([]);
@@ -94,9 +95,12 @@ export default function MyAtelierClientPage() {
 
   // Form states
   const [newProjectForm, setNewProjectForm] = useState({
+    title: '',
+    category: 'CUSTOM CORSETRY',
     service: 'BESPOKE',
     occasion: '',
     desiredDate: '',
+    targetDate: '',
     budgetRange: 'INR 50,000 – 1,00,000',
     description: '',
     styleDirection: '',
@@ -117,20 +121,35 @@ export default function MyAtelierClientPage() {
     message: '',
   });
 
-  // Load all client data
+  // Load client data with server session check
   const fetchData = async () => {
     try {
       setIsLoading(true);
+
+      // Verify client session server-side
+      const authRes = await fetch('/api/atelier/auth/client/session');
+      if (!authRes.ok) {
+        window.location.href = '/account/login';
+        return;
+      }
+      const authData = await authRes.json();
+      if (!authData.authenticated) {
+        window.location.href = '/account/login';
+        return;
+      }
+      setClientUser(authData.user);
+      const userId = authData.user.id || 'user-client-01';
+
       const [ordRes, projRes, quoteRes, aptRes, measRes, passRes, tickRes, notifRes] =
         await Promise.all([
-          fetch('/api/atelier/orders?customerId=user-client-01'),
-          fetch('/api/atelier/projects?customerId=user-client-01'),
-          fetch('/api/atelier/quotes?customerId=user-client-01'),
-          fetch('/api/atelier/consultations?customerId=user-client-01'),
-          fetch('/api/atelier/measurements?userId=user-client-01'),
-          fetch('/api/atelier/passports?ownerId=user-client-01'),
-          fetch('/api/atelier/support?customerId=user-client-01'),
-          fetch('/api/atelier/notifications?userId=user-client-01'),
+          fetch(`/api/atelier/orders?customerId=${userId}`),
+          fetch(`/api/atelier/projects?customerId=${userId}`),
+          fetch(`/api/atelier/quotes?customerId=${userId}`),
+          fetch(`/api/atelier/consultations?customerId=${userId}`),
+          fetch(`/api/atelier/measurements?userId=${userId}`),
+          fetch(`/api/atelier/passports?ownerId=${userId}`),
+          fetch(`/api/atelier/support?customerId=${userId}`),
+          fetch(`/api/atelier/notifications?userId=${userId}`),
         ]);
 
       const [ord, proj, quo, apt, meas, pass, tick, notif] = await Promise.all([
@@ -157,6 +176,11 @@ export default function MyAtelierClientPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleLogout = async () => {
+    await fetch('/api/atelier/auth/client/logout', { method: 'POST' });
+    window.location.href = '/account/login';
   };
 
   useEffect(() => {
@@ -274,25 +298,25 @@ export default function MyAtelierClientPage() {
             MY ATELIER
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#171717]/70 font-light mt-1">
-            Welcome, Elena Rossi. Your pieces, bespoke commissions, and private fitting records — together.
+            Welcome, {clientUser?.name || 'Patron'}. Your bespoke commissions, orders, and private fitting records.
           </p>
         </div>
 
-        {/* Quick Cross-Portal Switcher */}
-        <div className="flex items-center gap-3 self-start md:self-auto bg-[#FAF7F2] p-2 border border-[#171717]/15">
-          <div className="text-right hidden sm:block">
-            <span className="font-mono text-[9px] text-[#A85E43] uppercase tracking-wider block font-semibold">
-              PORTAL SWITCH
+        {/* Client Session Actions */}
+        <div className="flex items-center gap-3 self-start md:self-auto bg-[#FAF7F2] p-2.5 border border-[#171717]/15">
+          <div className="text-right hidden sm:block font-mono text-[10px]">
+            <span className="text-[#A85E43] uppercase tracking-wider block font-semibold">
+              PATRON ATELIER
             </span>
-            <span className="font-sans text-[11px] text-[#171717]/60">Role: Private Patron</span>
+            <span className="text-[#171717]/60">{clientUser?.email || 'Verified Client'}</span>
           </div>
-          <Link
-            href="/admin"
-            className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#171717] hover:bg-[#A85E43] text-[#FAF7F2] font-mono text-[10px] uppercase tracking-widest transition-colors cursor-pointer"
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#171717] hover:bg-[#A85E43] text-[#FAF7F2] font-mono text-[10px] uppercase tracking-widest transition-colors cursor-pointer"
           >
-            <span>ATELIER CONTROL</span>
-            <ArrowUpRight className="w-3 h-3" />
-          </Link>
+            <span>SIGN OUT</span>
+          </button>
         </div>
       </div>
 

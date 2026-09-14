@@ -180,6 +180,9 @@ export default function NavigationMenu({
 
   // Additional exploratory links
   const auxiliaryLinks = [
+    { label: 'CURATED COLLECTION', href: '/collection' },
+    { label: 'EDITORIAL STYLING', href: '/styling' },
+    { label: 'COUTURE ATELIER', href: '/atelier' },
     { label: 'MY ATELIER (CLIENT)', href: '/account' },
     { label: 'ATELIER CONTROL (ADMIN)', href: '/admin' },
     { label: 'VISUAL DIARY', href: '/visual-diary' },

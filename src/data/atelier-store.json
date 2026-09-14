@@ -18,6 +18,23 @@
       "createdAt": "2025-11-14T10:00:00Z"
     },
     {
+      "id": "user-client-02",
+      "name": "Elena Rossi",
+      "email": "elena.rossi@milan.it",
+      "phone": "+39 02 8492 104",
+      "role": "CLIENT",
+      "avatarUrl": "",
+      "preferredCommunication": "Email",
+      "language": "English (UK)",
+      "country": "Italy",
+      "stylePreferences": [
+        "Victorian Corsetry",
+        "Sustainable Handloom",
+        "Architectural Silhouettes"
+      ],
+      "createdAt": "2025-11-14T10:00:00Z"
+    },
+    {
       "id": "user-admin-01",
       "name": "Kirti Desai",
       "email": "kirti@kirtidesai.com",
@@ -35,6 +52,22 @@
       "createdAt": "2025-01-01T08:00:00Z"
     },
     {
+      "id": "user-admin-02",
+      "name": "Atelier Director",
+      "email": "admin@kirtidesai.com",
+      "phone": "+91 98250 12345",
+      "role": "SUPER_ADMIN",
+      "avatarUrl": "/images/hero/kirti-hero-chandelier.jpg",
+      "preferredCommunication": "Email",
+      "language": "English",
+      "country": "India",
+      "stylePreferences": [
+        "Atelier Management",
+        "Haute Couture"
+      ],
+      "createdAt": "2025-01-01T08:00:00Z"
+    },
+    {
       "id": "user-designer-01",
       "name": "Aarav Mehta",
       "email": "aarav.mehta@kirtidesai.com",
@@ -43,6 +76,45 @@
       "preferredCommunication": "Email",
       "country": "India",
       "createdAt": "2025-06-01T09:00:00Z"
+    },
+    {
+      "id": "user-1789357747644-2vzv",
+      "name": "Siddharth Rao",
+      "email": "siddharth.rao@couture.com",
+      "role": "CLIENT",
+      "avatarUrl": "",
+      "phone": "+91 9988776655",
+      "stylePreferences": [
+        "Bespoke Atelier",
+        "Handloom Heritage"
+      ],
+      "createdAt": "2026-09-14T03:49:07.644Z"
+    },
+    {
+      "id": "user-1789357752738-9xrd",
+      "name": "Alistair Vance",
+      "email": "collector.london@gmail.com",
+      "role": "CLIENT",
+      "avatarUrl": "",
+      "phone": "",
+      "stylePreferences": [
+        "Bespoke Atelier",
+        "Living Indian Craft"
+      ],
+      "createdAt": "2026-09-14T03:49:12.738Z"
+    },
+    {
+      "id": "user-1789360354671-uz68",
+      "name": "kirti",
+      "email": "yadav.shubham.jangbahadur003@gmail.com",
+      "role": "CLIENT",
+      "avatarUrl": "",
+      "phone": "",
+      "stylePreferences": [
+        "Bespoke Atelier",
+        "Living Indian Craft"
+      ],
+      "createdAt": "2026-09-14T04:32:34.671Z"
     }
   ],
   "orders": [
@@ -632,6 +704,16 @@
   ],
   "notifications": [
     {
+      "id": "notif-1789357747645",
+      "userId": "user-1789357747644-2vzv",
+      "recipientRole": "CLIENT",
+      "category": "SYSTEM",
+      "title": "Welcome to Kirti Desai Atelier",
+      "message": "Your client account (siddharth.rao@couture.com) has been activated. You may now book private consultations and track bespoke commissions.",
+      "read": false,
+      "createdAt": "2026-09-14T03:49:07.645Z"
+    },
+    {
       "id": "notif-01",
       "userId": "user-client-01",
       "recipientRole": "CLIENT",
@@ -677,6 +759,36 @@
     }
   ],
   "auditLog": [
+    {
+      "id": "audit-1789360376053-yfsr",
+      "actorName": "Atelier Director",
+      "actorRole": "SUPER_ADMIN",
+      "action": "ADMIN_AUTHENTICATED",
+      "resource": "AUTH_SESSION",
+      "resourceId": "user-admin-02",
+      "details": "Staff authenticated from administrative portal: admin@kirtidesai.com",
+      "timestamp": "2026-09-14T04:32:56.053Z"
+    },
+    {
+      "id": "audit-1789357757312-u5ab",
+      "actorName": "Kirti Desai",
+      "actorRole": "SUPER_ADMIN",
+      "action": "GOOGLE_WORKSPACE_AUTH",
+      "resource": "AUTH_SESSION",
+      "resourceId": "user-admin-01",
+      "details": "Google Workspace SSO verified for staff: kirti@kirtidesai.com",
+      "timestamp": "2026-09-14T03:49:17.312Z"
+    },
+    {
+      "id": "audit-1789357737952-scyh",
+      "actorName": "Atelier Director",
+      "actorRole": "SUPER_ADMIN",
+      "action": "ADMIN_AUTHENTICATED",
+      "resource": "AUTH_SESSION",
+      "resourceId": "user-admin-02",
+      "details": "Staff authenticated from administrative portal: admin@kirtidesai.com",
+      "timestamp": "2026-09-14T03:48:57.952Z"
+    },
     {
       "id": "audit-01",
       "actorName": "Kirti Desai",

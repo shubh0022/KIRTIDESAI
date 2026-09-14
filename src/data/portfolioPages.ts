@@ -52,7 +52,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     image: '/images/projects/pattern-scissors-draft.jpg',
     imageCaption: 'Flat pattern drafting calibrated to waist curve radius and tension lines.',
     metadata: [
-      { label: 'PROJECT', value: '01 / 05' },
+      { label: 'PROJECT', value: '01' },
       { label: 'TIMELINE', value: 'DECEMBER 2025' },
       { label: 'CORE SKILLS', value: 'CORSETRY, PATTERN DRAFTING, TOILE DRAPING' },
     ],
@@ -105,7 +105,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     image: '/images/projects/card-02-athleisure.jpg',
     imageCaption: 'Handloom Khadi activewear drape sample exploring breathability and ease.',
     metadata: [
-      { label: 'PROJECT', value: '02 / 05' },
+      { label: 'PROJECT', value: '02' },
       { label: 'TIMELINE', value: 'JULY 2025' },
       { label: 'FOCUS', value: 'HANDLOOM TEXTILE, ERGONOMIC SPORTSWEAR' },
     ],
@@ -134,7 +134,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     image: '/images/projects/card-03-craft.jpg',
     imageCaption: 'Lac resin thermal molding and mineral pigment blending.',
     metadata: [
-      { label: 'PROJECT', value: '03 / 05' },
+      { label: 'PROJECT', value: '03' },
       { label: 'CRAFT TRADITIONS', value: 'LAC CRAFT · PIPLI WORK · BAGH PRINT' },
       { label: 'YEAR', value: '2024' },
     ],
@@ -163,7 +163,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     image: '/images/projects/card-04-merchandising.jpg',
     imageCaption: 'Technical reversible seam closure and zipper engineering.',
     metadata: [
-      { label: 'PROJECT', value: '04 / 05' },
+      { label: 'PROJECT', value: '04' },
       { label: 'FOCUS', value: 'VALUE WEAR, TECH PACKS, UNIT ECONOMICS' },
       { label: 'DATE', value: 'AUG – OCT 2024' },
     ],
@@ -180,7 +180,7 @@ export const portfolioSpreads: PortfolioSpread[] = [
     image: '/images/projects/card-05-wearable-art.jpg',
     imageCaption: 'Sculptural red textile assemblage and organic volume.',
     metadata: [
-      { label: 'PROJECT', value: '05 / 05' },
+      { label: 'PROJECT', value: '05' },
       { label: 'THEME', value: 'EMOTIONAL TRANSCENDENCE & TEXTURAL INTENSITY' },
       { label: 'DATE', value: 'DEC 2024 – FEB 2025' },
     ],

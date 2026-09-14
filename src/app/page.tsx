@@ -11,34 +11,39 @@ import CraftHighlight from '@/components/home/CraftHighlight';
 import ExperienceTimeline from '@/components/home/ExperienceTimeline';
 import ContactCTA from '@/components/home/ContactCTA';
 
+import CollectionsStrip from '@/components/home/CollectionsStrip';
+
 export default function Home() {
   return (
     <div className="flex flex-col w-full overflow-hidden">
-      {/* Cover & Asymmetric Hero */}
+      {/* 01: Cover & Editorial Hero */}
       <Hero />
 
-      {/* About The Designer */}
-      <IntroStatement />
-
-      {/* Selected Work (Curated Case Studies) */}
+      {/* 02: Selected Work (Curated Real Case Studies) */}
       <SelectedWork />
 
-      {/* Studio Methodology (How I Make) */}
+      {/* 03: Curated Collections (Anatomical Architecture & Woven Resistance) */}
+      <CollectionsStrip />
+
+      {/* 04: Studio Methodology (8-Step Process) */}
       <ProcessStrip />
 
-      {/* Interactive Atelier Studio Table */}
-      <StudioTable />
-
-      {/* Core Philosophy: Material → Craft → Garment → Identity */}
-      <MaterialToMemory />
-
-      {/* Craft Research & Material Studies */}
+      {/* 06: Craft Research & Living Traditions (Lac, Pipli, Bagh) */}
       <CraftHighlight />
 
-      {/* Experience & Fashion Week Runways */}
+      {/* 07: Core Philosophy: Material → Craft → Garment → Identity */}
+      <MaterialToMemory />
+
+      {/* 08: Interactive Atelier Studio Table */}
+      <StudioTable />
+
+      {/* 09: About The Designer */}
+      <IntroStatement />
+
+      {/* 10: Experience & Fashion Week Runways */}
       <ExperienceTimeline />
 
-      {/* Direct Inquiries & Contact Banner */}
+      {/* 11: Direct Inquiries & Contact Banner */}
       <ContactCTA />
     </div>
   );
